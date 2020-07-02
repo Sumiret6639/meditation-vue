@@ -1,0 +1,93 @@
+@import "functions";
+@import "./helpers/variables";
+@import "bootstrap";
+
+//font
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Noto+Serif+TC:wght@300;400;500;600;700;900&display=swap');
+
+*{
+    font-family: 'Noto Serif TC','Lora', serif;
+    color: #fff
+}
+
+button{
+    background-color: transparent;
+    border: 0;
+    position: relative;
+}
+
+.wrap{
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+
+    &::after{
+        display: block;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(to bottom,rgba(black,0%),rgba(black,100%));
+    }
+}
+
+.sound-controller{
+    display: flex;
+}
+
+.sound-btn{
+    position: relative;
+    width: 300px;
+    height: 120px;
+
+    .pause-btn,.play-btn{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .moving-line{
+        transform: rotate(-90deg)
+    }
+}
+
+.setting{
+    width: 800px;
+    height: 800px;
+    position: fixed;
+    clip-path: circle(50% at 0 100%);
+    background: #000;
+    bottom: 0px;
+    left: 0px;
+    transition: 0.8s;
+    cursor: pointer;
+
+    .time-controller{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 80px;
+        bottom: 100px;
+        transition: 0.9s;
+
+        .time{
+            color: #fff;
+            padding: 16px 24px;
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+
+            &:hover{
+                border: 1px solid #fff;
+            }
+        }
+    }
+}
+
+.type-icon{
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+}

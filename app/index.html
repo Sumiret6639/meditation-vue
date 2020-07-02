@@ -1,0 +1,67 @@
+---
+title: Boostrap Index
+layout: ./app/layout.ejs
+engine: ejs
+current: index
+---
+<div id="app">
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="wrap" :style="bgiStyle(type)"></div>
+    <div class="container d-flex flex-column align-items-center">
+      <h1>現在播放：{{type}}</h1>
+      <h2>{{minutes < 10 ? '0' + minutes : minutes}} : {{seconds < 10 ? '0' +seconds : seconds}}</h2>
+      <div class="sound-controller d-flex">
+        <button class="sound-btn" @click="changeSongStatus(), isPaused = !isPaused, getTime()">
+          <svg width="120" height="120" viewBox="0 0 453 453" fill="none" xmlns="http://www.w3.org/2000/svg" class="moving-line">
+            <circle cx="226.5" cy="226.5" r="216.5" stroke="white" stroke-width="10" / :style="movingStyle(currentTime)" >
+          </svg>
+          
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="32px"
+            fill="#fff" :class="isPaused ? 'd-block' : 'd-none'" class="play-btn">
+            <path d="M9.09,5.23l7.05,5.99c0.48,0.4,0.48,1.16,0,1.56l-7.05,5.99c-0.64,0.54-1.59,0.07-1.59-0.78V6.01
+                C7.5,5.16,8.45,4.69,9.09,5.23" />
+          </svg>
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+            y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve" width="32px" 
+            fill="#fff" :class="isPaused ? 'd-none' : 'd-block'" class="pause-btn">
+            <path d="M-34.91,5.23l7.05,5.99c0.48,0.4,0.48,1.16,0,1.56l-7.05,5.99c-0.64,0.54-1.59,0.07-1.59-0.78
+                V6.01C-36.5,5.16-35.55,4.69-34.91,5.23" />
+            <g>
+              <path class="st0"
+                d="M14.5,19.01c-0.55,0-1-0.45-1-1V5.99c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v12.02c0,0.55-0.45,1-1,1H14.5z" />
+              <path class="st0"
+                d="M7.5,19.01c-0.55,0-1-0.45-1-1V5.99c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v12.02c0,0.55-0.45,1-1,1H7.5z" />
+            </g>
+          </svg>
+        </button>
+      </div>
+  
+      <div class="setting">
+        <div class="time-controller">
+          <a class="time" data-second="180" @click="resetTimeDisplay(180)">3分鐘</a>
+          <a class="time" data-second="480" @click="resetTimeDisplay(480)">8分鐘</a>
+          <a class="time" data-second="600" @click="resetTimeDisplay(600)">10分鐘</a>
+        </div>
+      </div>
+
+      <div class="type-controller">
+        <a class="type" @click=" type = 'rain' , changeSongType()">
+          <img src="./assets/images/icon-rain.svg" alt="" class="type-icon">
+        </a>
+        <a class="type" @click=" type = 'beach' ,changeSongType()">
+          <img src="./assets/images/icon-beach.svg" alt="" class="type-icon">
+        </a>
+      </div>
+
+      <audio ref="audio" controls class="song d-none" preload="auto"
+      :src="'./assets/images/sounds/'+type+'.mp3'">
+      </audio>
+    </div>
+  </div>
+</div>
+
+
+
+
+
