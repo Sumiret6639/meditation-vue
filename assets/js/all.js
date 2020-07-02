@@ -69,7 +69,7 @@ var vue = new Vue({
     },
     bgiStyle: function bgiStyle(img) {
       return {
-        "background-image": "url(../assets/images/".concat(img, ".jpg)")
+        "background-image": "url(./assets/images/".concat(img, ".jpg)")
       };
     }
   },
